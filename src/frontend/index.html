@@ -1,103 +1,89 @@
 <!DOCTYPE html>
-  <html>
-    <head>
-      <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
-      <link type="text/css" rel="stylesheet" href="./static/css/materialize.min.css"  media="screen,projection"/>
-      <link type="text/css" rel="stylesheet" href="./static/css/styles.css"  media="screen,projection"/>
-      <script type="text/javascript" src="./static/js/materialize.min.js"></script>
-      <script src="js/user.js"></script>
-      <script type="text/javascript" src="js/main.js"></script>
-      
-    
-      <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-    </head>
-    <body>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- Enlaces a Material Icons y Materialize CSS para diseño de UI -->
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <link type="text/css" rel="stylesheet" href="./static/css/materialize.min.css" media="screen,projection"/>
+    <link type="text/css" rel="stylesheet" href="./static/css/styles.css" media="screen,projection"/>
+    <script type="text/javascript" src="./static/js/materialize.min.js"></script>
+    <script type="text/javascript" src="js/main.js"></script>
+    <title>Smart Home</title>
+</head>
+<body>
+    <main>
+        <!-- Barra de navegación superior -->
+        <nav style="background-color:#124580">
+            <div class="nav-wrapper">
+                <a href="#" class="brand-logo left" style="margin-left: 15px;">Smart Home</a>
+                <ul id="nav-mobile" class="right" style="margin-right: 15px;">
+                    <li><a href="#">Help</a></li>
+                </ul>
+            </div>
+        </nav>
+        
+        <div class="container">
+            <br/>
+            <h5>Gestión de Dispositivos</h5>
 
-        <main>
-            <!-- Navigation bar -->
-            <nav style="background-color:#124580">
-                <div id="xx" class="nav-wrapper">
-                    <a href="#!" class="brand-logo left" style="margin-left: 15px;">Smart Home</a>
-                    <ul id="nav-mobile" class="right" style="margin-right: 15px;">
-                        <li><a href="#">Help</a></li>
-                    </ul>
+            <!-- Contenedor centrado para los botones de acción -->
+            <div class="row center-align">
+                <button id="btnBuscar" class="btn waves-effect waves-light">Buscar Dispositivos</button>
+                <button id="btnNuevo" class="btn waves-effect waves-light">Nuevo Dispositivo</button>
+                <button id="btnEliminar" class="btn waves-effect waves-light disabled" disabled>Eliminar Dispositivos</button>
+                <button id="btnEditar" class="btn waves-effect waves-light disabled" disabled>Editar Dispositivo</button>
+            </div>
+            
+            <!-- Formulario de nuevo dispositivo oculto inicialmente -->
+            <div id="formNuevoDispositivo" class="row" style="display: none;">
+                <div class="input-field col s12">
+                    <input id="nombreDispositivo" type="text">
+                    <label for="nombreDispositivo">Nombre del Dispositivo</label>
                 </div>
-            </nav>	
-            <!-- Page Body -->
-            <div class="container">
-                <br/>
-                <h1 id="tit">texto</h1>
-                <h3>Smart Home Web asdas!</h3>
-              
-                <br/>
-                <input id="txt" type="text" value="valor1"/>
-                <div class="row">
-                    <div class="input-field col s12 m12 l6 xl6"  hidden id="divLogin">
-                        <div class="row">
-                            <div class="input-field col s6 m6 l6 xl6">
-                                <input placeholder="JDON" id="userName" type="text">
-                                <label for="userName">Nombre de Usuario</label>
-                            </div>
-                            <div class="input-field col s6 m6 l6 xl6">
-                                <input  id="userPass" type="password">
-                                <label for="userPass">Contraseña</label>
-                            </div>
-                            <div>
-                                <p>
-                                    <label>
-                                      <input type="checkbox" id="cbRecor" />
-                                      <span>Rercordarme</span>
-                                    </label>
-                                  </p>
-                            </div>
-                            <div>
-                                <button id="btnLogin" class="btn-large waves-effect waves-light" type="button">
-                                Ingresar
-                                <i class="material-icons left">face</i>
-                                </button>
-                            </div>
-                        </div>
-                        <textarea id="textarea_1" class="materialize-textarea" style="height: 150px;" readonly></textarea>
-                    </div>
-                    <div class="col s12 m12 l6 xl6">
-                        <ul  id="list" class="collection">
-                          
-                            
-                          
-                        </ul>
-                    </div>
-                    
+                <div class="input-field col s12">
+                    <input id="descripcionDispositivo" type="text">
+                    <label for="descripcionDispositivo">Descripción del Dispositivo</label>
                 </div>
-                <div class="row">
-                    <div class="col s4 m4 l2 xl2">
-                    
-                        <button id="btn" class="btn waves-effect waves-light button-view"  name="hello_button">PRESS ME</button>
-                        <button id="btnBuscar" class="btn waves-effect waves-light button-view"  name="hello_button">Buscar</button>
-                        <button id="btnPost" class="btn waves-effect waves-light button-view"  name="hello_button">Ejecutar POST</button>
-                    </div>
-                </div>
-            </div>	
-        </main>
-		<!-- Page Footer -->
-        <footer class="page-footer" style="background-color:#124580">
-            <div class="container">
-                <div class="row">
-                    <div class="col l6 s6">
-                        <h5 class="white-text">Smart Home</h5>
-                        <p class="grey-text text-lighten-4">Copyright ### - 2021</p>
-                    </div>
-                    <div class="col l6 s6">
-                        <h5 class="white-text right-align">Contact</h5>
-                        <p class="white-text right-align">
-                            <a class="grey-text text-lighten-3" href="!#">Email | </a>
-                            <a class="grey-text text-lighten-3" href="!#">Twitter | </a>
-                            <a class="grey-text text-lighten-3" href="!#">LinkedIn</a>
-                        </p>
-                    </div>
+                <!-- Contenedor centrado para el botón -->
+                <div class="col s12 center-align">
+                    <button id="btnGuardarDispositivo" class="btn waves-effect waves-light">Guardar</button>
                 </div>
             </div>
-        </footer>
-		<!--JavaScript at end of body for optimized loading-->
-        
-    </body>
-  </html>
+
+            <!-- Formulario de edición de dispositivo oculto inicialmente -->
+            <div id="formEditarDispositivo" class="row" style="display: none;">
+                <div class="input-field col s12">
+                    <input id="editNombreDispositivo" type="text">
+                    <label for="editNombreDispositivo">Editar Nombre del Dispositivo</label>
+                </div>
+                <div class="input-field col s12">
+                    <input id="editDescripcionDispositivo" type="text">
+                    <label for="editDescripcionDispositivo">Editar Descripción del Dispositivo</label>
+                </div>
+                <!-- Contenedor centrado para el botón -->
+                <div class="col s12 center-align">
+                    <button id="btnGuardarEdicion" class="btn waves-effect waves-light">Guardar Cambios</button>
+                </div>
+            </div>
+            
+            <!-- Contenedor de dispositivos generados dinámicamente -->
+            <div class="row" id="grid-container">
+                <!-- Aquí se insertarán los dispositivos -->
+            </div>
+        </div>
+    </main>
+
+    <!-- Pie de página -->
+    <footer class="page-footer" style="background-color:#124580">
+        <div class="container">
+            <div class="row">
+                <div class="col l6 s6">
+                    <h5 class="white-text">Smart Home</h5>
+                    <p class="grey-text text-lighten-4">Copyright CEIoT FIUBA - 2024</p>
+                </div>
+            </div>
+        </div>
+    </footer>
+</body>
+</html>

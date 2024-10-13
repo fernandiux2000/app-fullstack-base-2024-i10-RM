@@ -1,19 +1,105 @@
-
+/* 
+Estilos globales y de estructura general de la página 
+*/
 body {
     display: flex;
     min-height: 100vh;
     flex-direction: column;
+    margin: 0;
+    padding: 0;
+    background: #f0f0f0;
 }
 
 main {
     flex: 1 0 auto;
+    padding: 0;
 }
 
-.title{
-    color: brown;
-    font-weight: bold;
-    text-align: center;
+/* 
+Estilos del contenedor de tarjetas de dispositivos 
+*/
+#grid-container {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr); /* 4 columnas */
+    gap: 10px; /* Espacio entre las tarjetas */
+    padding: 10px;
+    width: 100%;
+    box-sizing: border-box;
 }
-.parafo{
-    font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+
+/* 
+Estilos para las tarjetas de los dispositivos 
+*/
+.card {
+    background: white;
+    border-radius: 10px;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+    position: relative; /* Habilitar posición relativa para el checkbox */
+    width: 100%;
+    height: 180px; /* Ajuste de altura */
+}
+
+/* 
+Estilos para la sección de imagen dentro de la tarjeta 
+*/
+.card-image {
+    display: flex;
+    justify-content: center; /* Centrar la imagen horizontalmente */
+    align-items: center;     /* Centrar la imagen verticalmente */
+    width: 100%;
+    height: 80px; /* Ajuste de la altura del contenedor de la imagen */
+}
+
+.card-image img {
+    max-width: 100%;
+    max-height: 100%;
+    object-fit: contain; /* Asegura que la imagen se ajuste sin perder la proporción */
+}
+
+/* 
+Estilos para el contenido textual de la tarjeta 
+*/
+.card-content {
+    padding: 5px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    font-size: 0.6rem; /* Tamaño de fuente más pequeño */
+    text-align: center; /* Centrar el texto */
+}
+
+/* 
+Estilos para el interruptor (switch) dentro de las tarjetas 
+*/
+.switch {
+    margin-top: 5px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%; /* El interruptor toma todo el ancho disponible */
+}
+
+.switch label {
+    margin: 0;
+    font-size: 0.5rem; /* Fuente pequeña para el interruptor */
+}
+
+/* 
+Estilos para el checkbox en la esquina superior izquierda de cada tarjeta 
+*/
+.checkbox-container {
+    position: absolute;
+    top: 5px;
+    left: 5px;
+    z-index: 1; /* Asegurarse de que el checkbox esté por encima de otros elementos */
+}
+
+.checkbox-container input[type="checkbox"] {
+    width: 20px;
+    height: 20px;
+    visibility: visible !important; /* Asegurarse de que el checkbox sea visible */
 }

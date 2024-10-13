@@ -156,46 +156,64 @@ En esta sección podés ver los detalles específicos de funcionamiento del cód
 
 <details><summary><b>Mira los detalles de implementación</b></summary><br>
 
-### Agregar un dispositivo
+### Buscar dispositivos
 
-Completá los pasos para agregar un dispositivo desde el cliente web.
+El usuario interactúa con un botón en la interfaz. Al hacer clic en este botón, se envía una solicitud al backend para recuperar los dispositivos almacenados.
 
-### Frontend
+Solicitud HTTP: Cuando el usuario presiona el botón, se activa un evento click que ejecuta una función en el archivo main.ts. Esta función realiza una solicitud HTTP de tipo GET al endpoint /devices del backend.
 
-Completá todos los detalles sobre cómo armaste el frontend, sus interacciones, etc.
+Renderización de dispositivos: Una vez que la solicitud es exitosa y se recibe la respuesta del backend, la función mostrarDevices se encarga de procesar los datos y renderizar las tarjetas de cada dispositivo en el frontend. Los dispositivos se muestran en un formato de "cards", que incluye el nombre, descripción y estado del dispositivo, junto con un checkbox para la selección.
 
-### Backend
+El backend expone el endpoint /devices que procesa la solicitud HTTP de tipo GET enviada por el frontend. El endpoint consulta la base de datos MySQL para obtener todos los registros de la tabla Devices.
 
-Completá todos los detalles de funcionamiento sobre el backend, sus interacciones con el cliente web, la base de datos, etc.
+Consulta a la base de datos: El backend ejecuta una consulta SQL para recuperar todos los dispositivos y devuelve la información en formato JSON. Si la operación es exitosa, el backend responde con un código 200 y el listado de dispositivos.
+
+Respuesta: El backend envía una respuesta con los detalles de cada dispositivo en formato JSON, que incluye su nombre, descripción, tipo y estado (encendido/apagado).
+
+### Nuevo dispositivo
+
+El usuario puede agregar un dispositivo desde el cliente web llenando un formulario que solicita el nombre y descripción del dispositivo. Una vez completado, se mostrará una confirmación para que el usuario valide la creación del dispositivo antes de enviarlo al backend.
+
+El frontend realiza un request HTTP `POST` al endpoint `/devices` del backend, enviando los datos del dispositivo en formato JSON. El backend valida la información y, si es correcta, guarda el dispositivo en la base de datos MySQL. Si la operación es exitosa, el cliente recibe una respuesta con código 201.
+
+### Eliminar dispositivo
+
+La aplicación permite seleccionar varios dispositivos para eliminar. Antes de realizar la operación de eliminación, el usuario debe confirmar su acción a través de un popup. 
+
+Si el usuario confirma, el frontend envía un request HTTP `DELETE` al backend, especificando el ID del dispositivo a eliminar.
+
+### Editar un dispositivo
+
+El usuario puede seleccionar un dispositivo existente para editar sus detalles. Después de seleccionar un dispositivo y realizar los cambios, se muestra una confirmación para que el usuario confirme los cambios.
+
+El frontend envía un request HTTP `PUT` al endpoint `/devices/:id` del backend, pasando el nuevo nombre y descripción del dispositivo. Si la edición es exitosa, el backend actualiza la base de datos y devuelve un código de éxito.
 
 <details><summary><b>Ver los endpoints disponibles</b></summary><br>
 
-Completá todos los endpoints del backend con los metodos disponibles, los headers y body que recibe, lo que devuelve, ejemplos, etc.
+### Endpoints disponibles
 
-1) Devolver el estado de los dispositivos.
+1) Obtener el estado de todos los dispositivos:
+- Método: GET
+- URL: `/devices`
+- Respuesta: Devuelve un array JSON con todos los dispositivos.
 
-```json
-{
-    "method": "get",
-    "request_headers": "application/json",
-    "request_body": "",
-    "response_code": 200,
-    "request_body": {
-        "devices": [
-            {
-                "id": 1,
-                "status": true,
-                "description": "Kitchen light"
-            }
-        ]
-    },
-}
-``` 
+2) Crear un nuevo dispositivo:
+- Método: POST
+- URL: `/devices`
+- Request Body: `{ "name": "Lampara", "description": "Luz de sala", "state": 0, "type": 2 }`
+- Respuesta: Código 201 en caso de éxito.
 
-</details>
+3) Eliminar un dispositivo:
+- Método: DELETE
+- URL: /devices/:id
+- Request Parameters: id (requerido): El ID del dispositivo que se desea eliminar.
+- Respuesta: Código 200 si la eliminación fue exitosa. Código 404 si el dispositivo no se encuentra. Código 500 si hubo un error en el servidor.
 
-</details>
-
+4) Editar un dispositivo:
+- Método: PUT
+- URL: `/devices/:id`
+- Request Body: `{ "name": "Nuevo nombre", "description": "Nueva descripción" }`
+- Respuesta: Código 200 si la edición fue exitosa.
 
 ## Tecnologías utilizadas 🛠️
 
