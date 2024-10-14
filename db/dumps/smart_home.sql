@@ -50,7 +50,7 @@ INSERT INTO `Devices` (`id`, `name`, `description`, `state`, `type`) VALUES
 (3, 'Velador', 'Velador living', 1, 1),
 (4, 'Persiana 1', 'Persiana living', 1, 0),
 (5, 'Persiana 2', 'Persiana de la cocina', 1, 0),
-(6, 'Persiana 3', 'Persiana balcon', 0, 0);
+(6, 'Persiana 3', 'Persiana balcon', 0, 0),
 (7, 'Ventilador 1', 'Ventilador sala', 0, 3);
 
 --
